@@ -1,13 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// REDUX STUFF HERE
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+
+// Below is a reducer (function definition)
+// The return value of our reducer becomes our global state
+let initialState = {
+  teas: []
+}
+
+let teaReducer = (state = initialState, action) => {
+  switch(action.type) {
+    default: 
+      return state
+  }
+}
+
+let storeObj = createStore(teaReducer)
+console.log(storeObj.getState())
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={storeObj}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
