@@ -1,15 +1,16 @@
 import React from 'react';
-
+import {Link, Switch, Route} from 'react-router-dom'
+import {connect} from 'react-redux'
 import NavBar from "./components/NavBar"
 import TeaContainer from "./components/TeasContainer"
 import CartContainer from "./components/CartContainer"
+import { fetchAllTeas } from "./redux/Actions/teaActions"
 
 const fetchTeasURL = "http://localhost:3000/teas"
 
 class App extends React.Component {
 
   state = {
-    teasArr: [],
     cartTeas: []
   }
 
@@ -17,9 +18,7 @@ class App extends React.Component {
     fetch(fetchTeasURL)
     .then(resp => resp.json())
     .then(teasArr => {
-      this.setState({
-        teasArr
-      })
+      this.props.fetchAllTeas(teasArr)
     })
   }
 
@@ -31,14 +30,41 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="App">
+        <h1>Welcome to Iroh's Teashop</h1>
+        <Link to='/teas'>All the Teas</Link>
+        <Switch>
+          <Route path="/teas">
+            <TeaContainer addToCart={this.addToCart}/>
+          </Route>
+        </Switch>
         <NavBar />
-        <TeaContainer teasArr={this.state.teasArr} addToCart={this.addToCart}/>
         <CartContainer teasArr={this.state.cartTeas} />
       </div>
     );
   }
 }
 
-export default App;
+// First argument of the first ():
+    // mapStateToProps (get information)
+    // mapStateToProps is a callback function
+        // first arg of mapStateToProps is the global state object
+        // will return a POJO that will be merged into the props of the component
+// Second argument of the first ():
+  // mapDispatchToProps (send information)
+  // mapDispatchToProps is a POJO that will be merged into the props of the component
+
+// let fetchAllTeas = (array) => {
+//   return {
+//     type: "SET_TEAS",
+//     payload: array
+//   }
+// }
+
+let mapDispatchToProps = {
+  fetchAllTeas: fetchAllTeas
+}
+
+export default connect(null, mapDispatchToProps)(App);
