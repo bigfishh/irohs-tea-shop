@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import NavBar from "./components/NavBar"
 import TeaContainer from "./components/TeasContainer"
 import CartContainer from "./components/CartContainer"
+import LoginForm from "./components/LoginForm"
 import { fetchAllTeas } from "./redux/Actions/teaActions"
 
 const fetchTeasURL = "http://localhost:3000/teas"
@@ -35,13 +36,17 @@ class App extends React.Component {
       <div className="App">
         <h1>Welcome to Iroh's Teashop</h1>
         <Link to='/teas'>All the Teas</Link>
+        <Link to='/login'>Login</Link>
+        <NavBar />
         <Switch>
           <Route path="/teas">
             <TeaContainer addToCart={this.addToCart}/>
+            <CartContainer teasArr={this.state.cartTeas} />
+          </Route>
+          <Route path="/login">
+            <LoginForm />
           </Route>
         </Switch>
-        <NavBar />
-        <CartContainer teasArr={this.state.cartTeas} />
       </div>
     );
   }
