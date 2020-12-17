@@ -10,7 +10,10 @@ const initalState = {
 const userReducer = (state = initalState, {type, payload}) => {
     switch(type) {
         case "SAVE_USER_TO_STATE":
-            return {...state, user: payload.user, token: payload.token}
+            console.log("payload", payload)
+            return {...state, user: payload.user, cart: payload.user.current_cart.cart_teas, token: payload.token}
+        case "ADD_ITEM_TO_CART":
+            return {...state, cart: [...state.cart, payload]}
         default:
             return state
     }

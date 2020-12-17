@@ -4,3 +4,10 @@ export const saveUserToState = (userInfo) => {
         payload: userInfo
     }
 }
+
+export const addItemToCart = (newCart) => {
+    return {
+        type: "ADD_ITEM_TO_CART",
+        payload: newCart
+    }
+}

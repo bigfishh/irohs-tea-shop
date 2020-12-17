@@ -24,7 +24,6 @@ class App extends React.Component {
     })
 
     if(localStorage.token){
-      console.log("hi")
       fetch("http://localhost:3000/keep_logged_in", {
         method: "GET",
         headers: {
@@ -33,7 +32,6 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(resp => {
-        console.log(resp, "RESPONSE")
         if(resp.token){
           this.props.saveUserToState(resp)
         }
