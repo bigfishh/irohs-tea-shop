@@ -6,6 +6,7 @@ import TeaContainer from "./components/TeasContainer"
 import CartContainer from "./components/CartContainer"
 import LoginForm from "./components/LoginForm"
 import { fetchAllTeas } from "./redux/Actions/teaActions"
+import { saveUserToState } from "./redux/Actions/userActions"
 
 const fetchTeasURL = "http://localhost:3000/teas"
 
@@ -21,6 +22,22 @@ class App extends React.Component {
     .then(teasArr => {
       this.props.fetchAllTeas(teasArr)
     })
+
+    if(localStorage.token){
+      fetch("http://localhost:3000/keep_logged_in", {
+        method: "GET",
+        headers: {
+          "Authorization": localStorage.token
+        }
+      })
+      .then(res => res.json())
+      .then(resp => {
+        console.log(resp, "RESPONSE")
+        if(resp.token){
+          this.props.saveUserToState(resp)
+        }
+      })
+    }
   }
 
   addToCart = (teaObj) => {
@@ -68,8 +85,5 @@ class App extends React.Component {
 //   }
 // }
 
-let mapDispatchToProps = {
-  fetchAllTeas: fetchAllTeas
-}
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, { fetchAllTeas, saveUserToState })(App);

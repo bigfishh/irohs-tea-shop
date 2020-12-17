@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+import { saveUserToState } from '../redux/Actions/userActions'
 
 class LoginForm extends Component {
 
     state = {
         email_address: "",
-        password: ""
+        password: "",
+        error_message: ""
     }
 
     handleSubmit = (e) => {
@@ -19,7 +22,17 @@ class LoginForm extends Component {
             body: JSON.stringify(this.state)
         })
         .then(resp => resp.json())
-        .then(console.log)
+        .then(resp => {
+            if (resp.error) {
+                this.setState({
+                    error_message: resp.error
+                })
+            } else {
+                this.props.saveUserToState(resp)
+                localStorage.token = resp.token
+                this.props.history.push("/teas")
+            }
+        })
     }
 
     handleChange = (e) => {
@@ -46,4 +59,4 @@ class LoginForm extends Component {
         );
     }
 }
-export default withRouter(LoginForm);
+export default connect(null, { saveUserToState })(withRouter(LoginForm));
