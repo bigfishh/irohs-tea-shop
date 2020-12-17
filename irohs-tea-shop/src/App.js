@@ -24,6 +24,7 @@ class App extends React.Component {
     })
 
     if(localStorage.token){
+      console.log("hi")
       fetch("http://localhost:3000/keep_logged_in", {
         method: "GET",
         headers: {
