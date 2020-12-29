@@ -5,8 +5,6 @@ import { addItemToCart } from '../redux/Actions/userActions'
 class TeaCard extends React.Component {
 
     handleTeaClick = () => {
-        console.log("this.props.cart", this.props.cart)
-        console.log(`I've been clicked ${this.props.teaData.name}`)
         fetch("http://localhost:3000/cart_teas", {
             method: "POST",
             headers: {
@@ -15,9 +13,8 @@ class TeaCard extends React.Component {
                 "Authorization": localStorage.token
             }, 
             body: JSON.stringify({
-                cart_id: this.props.cart.id,
-                tea_id: this.props.teaData.id,
-                quantity: 1
+                cart_id: this.props.current_cart.id,
+                tea_id: this.props.teaData.id
             })
         })
         .then(resp => resp.json())
@@ -38,7 +35,7 @@ class TeaCard extends React.Component {
 
 const mapPropsToState = (globalState) => {
     return {
-        cart: globalState.userInfo.user.current_cart
+        current_cart: globalState.userInfo.user.current_cart
     }
 }
 

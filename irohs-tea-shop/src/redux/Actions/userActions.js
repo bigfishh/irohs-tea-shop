@@ -11,3 +11,10 @@ export const addItemToCart = (newCart) => {
         payload: newCart
     }
 }
+
+export const checkoutCart = (updatedUser) => {
+    return {
+        type: "CHECKOUT_CURRENT_CART",
+        payload: updatedUser
+    }
+}

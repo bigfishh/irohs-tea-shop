@@ -12,10 +12,6 @@ const fetchTeasURL = "http://localhost:3000/teas"
 
 class App extends React.Component {
 
-  state = {
-    cartTeas: []
-  }
-
   componentDidMount() {
     fetch(fetchTeasURL)
     .then(resp => resp.json())
@@ -39,15 +35,9 @@ class App extends React.Component {
     }
   }
 
-  addToCart = (teaObj) => {
-    console.log(teaObj)
-    this.setState({
-      cartTeas: [...this.state.cartTeas, teaObj]
-    })
-  }
+
 
   render() {
-    console.log(this.props)
     return (
       <div className="App">
         <h1>Welcome to Iroh's Teashop</h1>
@@ -56,8 +46,8 @@ class App extends React.Component {
         <NavBar />
         <Switch>
           <Route path="/teas">
-            <TeaContainer addToCart={this.addToCart}/>
-            <CartContainer teasArr={this.state.cartTeas} />
+            <TeaContainer />
+            <CartContainer />
           </Route>
           <Route path="/login">
             <LoginForm />

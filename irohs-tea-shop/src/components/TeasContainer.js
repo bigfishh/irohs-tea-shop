@@ -7,12 +7,11 @@ class TeaContainer extends React.Component {
 
     renderTeaCards = () => {
         return this.props.teas.map((teaObj) => {
-            return <TeaCard key={teaObj.id} teaData={teaObj} addToCart={this.props.addToCart}/>
+            return <TeaCard key={teaObj.id} teaData={teaObj} addToCart={this.props.addToCart} propType="teaCard"/>
         })
     }
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 <h2>Teas Container</h2>
