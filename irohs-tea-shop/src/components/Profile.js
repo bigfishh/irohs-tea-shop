@@ -10,7 +10,7 @@ function Profile(props) {
 
     return (
         <div>
-            {renderPreviousCarts()}
+            {props.pastOrders ? renderPreviousCarts() : <p>Loading</p>}
         </div>
     )
 }

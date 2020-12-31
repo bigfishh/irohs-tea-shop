@@ -5,6 +5,13 @@ export const saveUserToState = (userInfo) => {
     }
 }
 
+export const logUserOut = () => {
+    return {
+        type: "LOG_USER_OUT", 
+        payload: {}
+    }
+}
+
 export const addItemToCart = (newCart) => {
     return {
         type: "ADD_ITEM_TO_CART",

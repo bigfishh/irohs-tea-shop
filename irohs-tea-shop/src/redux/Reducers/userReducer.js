@@ -11,6 +11,8 @@ const userReducer = (state = initalState, {type, payload}) => {
     switch(type) {
         case "SAVE_USER_TO_STATE":
             return {...state, user: payload.user, cart: payload.user.current_cart.cart_teas, token: payload.token}
+        case "LOG_USER_OUT":
+            return {...state, user: {}, cart: [], token: ''}
         case "ADD_ITEM_TO_CART":
             let foundItem = state.cart.find(({id}) => id === payload.id)
             if (foundItem) {
