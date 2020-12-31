@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar"
 import TeaContainer from "./components/TeasContainer"
 import CartContainer from "./components/CartContainer"
 import LoginForm from "./components/LoginForm"
+import Profile from "./components/Profile"
 import { fetchAllTeas } from "./redux/Actions/teaActions"
 import { saveUserToState } from "./redux/Actions/userActions"
 
@@ -43,6 +44,7 @@ class App extends React.Component {
         <h1>Welcome to Iroh's Teashop</h1>
         <Link to='/teas'>All the Teas</Link>
         <Link to='/login'>Login</Link>
+        <Link to='/profile'>Profile</Link>
         <NavBar />
         <Switch>
           <Route path="/teas">
@@ -51,6 +53,9 @@ class App extends React.Component {
           </Route>
           <Route path="/login">
             <LoginForm />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </div>

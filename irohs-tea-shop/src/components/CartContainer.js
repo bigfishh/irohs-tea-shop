@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { checkoutCart } from '../redux/Actions/userActions'
 import CartTeaCard from './CartTeaCard'
 
@@ -23,8 +24,8 @@ function CartContainer(props) {
             })
             .then(resp => resp.json())
             .then(resp => {
-                console.log("checkout resp", resp)
                 props.checkoutCart(resp)
+                props.history.push("/profile")
             })
         }
     }
@@ -45,4 +46,4 @@ const mapStateToProps = (globalState) => {
     }
 }
 
-export default connect(mapStateToProps, {checkoutCart})(CartContainer)
+export default connect(mapStateToProps, {checkoutCart})(withRouter(CartContainer))
