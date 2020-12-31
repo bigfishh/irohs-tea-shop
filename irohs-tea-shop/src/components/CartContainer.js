@@ -39,7 +39,6 @@ function CartContainer(props) {
 }
 
 const mapStateToProps = (globalState) => {
-    console.log(globalState.userInfo.cart)
     return {
         cart: globalState.userInfo.cart,
         current_cart: globalState.userInfo.user.current_cart

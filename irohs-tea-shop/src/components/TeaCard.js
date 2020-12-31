@@ -24,6 +24,7 @@ class TeaCard extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return(
             <div>
                 <p>{this.props.teaData.name}</p>
