@@ -5,6 +5,7 @@ import { addItemToCart } from '../redux/Actions/userActions'
 class TeaCard extends React.Component {
 
     handleTeaClick = () => {
+        let clickedCartTea = this.props.current_cart.cart_teas.find((cart_tea) => cart_tea.tea_id === this.props.teaData.id)
         fetch("http://localhost:3000/cart_teas", {
             method: "POST",
             headers: {
@@ -14,7 +15,8 @@ class TeaCard extends React.Component {
             }, 
             body: JSON.stringify({
                 cart_id: this.props.current_cart.id,
-                tea_id: this.props.teaData.id
+                tea_id: this.props.teaData.id,
+                quantity: clickedCartTea.quantity + 1
             })
         })
         .then(resp => resp.json())
@@ -24,7 +26,6 @@ class TeaCard extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return(
             <div>
                 <p>{this.props.teaData.name}</p>
