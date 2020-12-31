@@ -12,9 +12,17 @@ export const addItemToCart = (newCart) => {
     }
 }
 
+export const removeItemToCart = (updatedCart) => {
+    return {
+        type: "REMOVE_ITEM_TO_CART",
+        payload: updatedCart
+    }
+}
+
 export const checkoutCart = (updatedUser) => {
     return {
         type: "CHECKOUT_CURRENT_CART",
         payload: updatedUser
     }
 }
+

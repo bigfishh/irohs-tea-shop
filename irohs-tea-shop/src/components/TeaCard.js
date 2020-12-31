@@ -6,6 +6,10 @@ class TeaCard extends React.Component {
 
     handleTeaClick = () => {
         let clickedCartTea = this.props.current_cart.cart_teas.find((cart_tea) => cart_tea.tea_id === this.props.teaData.id)
+        let teaQuant = 1
+        if (clickedCartTea) {
+            teaQuant = clickedCartTea.quantity + 1
+        }
         fetch("http://localhost:3000/cart_teas", {
             method: "POST",
             headers: {
@@ -16,7 +20,7 @@ class TeaCard extends React.Component {
             body: JSON.stringify({
                 cart_id: this.props.current_cart.id,
                 tea_id: this.props.teaData.id,
-                quantity: clickedCartTea.quantity + 1
+                quantity: teaQuant
             })
         })
         .then(resp => resp.json())
