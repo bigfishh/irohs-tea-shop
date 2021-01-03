@@ -31,7 +31,7 @@ function CartContainer(props) {
     }
 
     return (
-        <div>
+        <div className="cart-container">
             <h1>Cart</h1>
             {props.cart ? renderTeaCardsInCart(): <h3>Loading</h3>}
             {props.cart && props.cart.length > 0 ? <button onClick={handleCheckout}>Checkout</button>: null}

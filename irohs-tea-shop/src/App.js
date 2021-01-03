@@ -1,13 +1,14 @@
 import React from 'react';
-import {Link, Switch, Route, withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
+import './App.css'
+import { Switch, Route, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import NavBar from "./components/NavBar"
 import TeaContainer from "./components/TeasContainer"
 import CartContainer from "./components/CartContainer"
 import LoginForm from "./components/LoginForm"
 import Profile from "./components/Profile"
 import { fetchAllTeas } from "./redux/Actions/teaActions"
-import { saveUserToState, logUserOut } from "./redux/Actions/userActions"
+import { saveUserToState } from "./redux/Actions/userActions"
 
 const fetchTeasURL = "http://localhost:3000/teas"
 
@@ -36,20 +37,10 @@ class App extends React.Component {
     }
   }
 
-  handleLogout = () => {
-    this.props.logUserOut()
-    localStorage.clear()
-    this.props.history.push('/login')
-  }
-
   render() {
     return (
       <div className="App">
         <h1>Welcome to Iroh's Teashop</h1>
-        <Link to='/teas'>All the Teas</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/profile'>Profile</Link>
-        <button onClick={this.handleLogout}>Log out</button>
         <NavBar />
         <Switch>
           <Route path="/teas">
@@ -85,4 +76,4 @@ class App extends React.Component {
 // }
 
 
-export default connect(null, { fetchAllTeas, saveUserToState, logUserOut })(withRouter(App));
+export default connect(null, { fetchAllTeas, saveUserToState })(withRouter(App));

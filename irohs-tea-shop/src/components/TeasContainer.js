@@ -13,7 +13,7 @@ class TeaContainer extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="tea-container">
                 <h2>Teas Container</h2>
                 {this.renderTeaCards()}
             </div>
