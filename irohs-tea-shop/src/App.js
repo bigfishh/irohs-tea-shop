@@ -39,10 +39,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>Welcome to Iroh's Teashop</h1>
+      <div className="app">
         <NavBar />
-        <Switch>
+        {/* <Switch>
           <Route path="/teas">
             <TeaContainer />
             <CartContainer />
@@ -53,7 +52,7 @@ class App extends React.Component {
           <Route path="/profile">
             <Profile />
           </Route>
-        </Switch>
+        </Switch> */}
       </div>
     );
   }

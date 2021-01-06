@@ -8,15 +8,14 @@ function NavBar(props) {
     const handleLogout = () => {
         props.logUserOut()
         localStorage.clear()
-        props.history.push('/login')
     }
 
     return (
-        <div>
+        <div className="navbar">
+            <p>Iroh's Teashop</p>
             <Link to='/teas'>All the Teas</Link>
-            <Link to='/login'>Login</Link>
             <Link to='/profile'>Profile</Link>
-            <button onClick={handleLogout}>Log out</button>
+            {localStorage.token ? <Link onClick={handleLogout} to="/login">Log out</Link> : <Link to='/login'>Login</Link>}
         </div>
     )
 }

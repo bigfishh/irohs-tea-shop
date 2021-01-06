@@ -1,28 +1,42 @@
-.App {
-  /* text-align: center; */
+.app {
+  padding: 5%;
+  background-color: #FFFFFF;
+  height: 100vh;
+  border-radius: 3%;
 }
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  /* background-color: #419979; */
+  padding: 1%;
+  /* border-radius: 5px; */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
+  justify-content: flex-end;
+  font-size: 1.25em;
 
-/* .App-link {
-  color: #61dafb;
-} */
+}
+
+.navbar > p {
+  display: flex;
+  justify-content: left;
+  /* margin: 0% 30%; */
+  color: #242322;
+  background-color: antiquewhite;
+}
+
+.navbar > a {
+  margin-left: 3%;
+  display: inline;
+  text-decoration: none;
+  color: #242322;
+  background-color: burlywood;
+}
 
 .tea-container {
   float: left;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 
 .cart-container {
   float: left;
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
 }
